@@ -3,11 +3,17 @@ version: '3'
 tasks:
   h5p-convert:
     cmds:
-      - rm -rf website/*.h5p
-      - ls input/*.h5p | xargs -I {} unzip {} -d website/{}
+      - rm -rf website/left-side.h5p/
+      - unzip input/left-side.h5p -d website/left-side.h5p
+      - rm -rf website/right-side.h5p/
+      - unzip input/right-side.h5p -d website/right-side.h5p
+      - rm -rf website/device-compartment-1.h5p/
+      - unzip input/device-compartment-1.h5p -d website/device-compartment-1.h5p
 
   start:
     dir: website
+    deps:
+      - h5p-convert
     cmds:
       - python3 -m http.server 8000
   
