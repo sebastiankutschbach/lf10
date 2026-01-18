@@ -1,0 +1,13 @@
+version: '3'
+
+tasks:
+  h5p-convert:
+    cmds:
+      - rm -rf website/*.h5p
+      - ls input/*.h5p | xargs -I {} unzip {} -d website/{}
+
+  start:
+    dir: website
+    cmds:
+      - python3 -m http.server 8000
+  
