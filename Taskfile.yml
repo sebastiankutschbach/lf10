@@ -3,15 +3,15 @@ version: '3'
 tasks:
   h5p-convert:
     cmds:
-      - rm -rf website/left-side.h5p/
-      - unzip input/left-side.h5p -d website/left-side.h5p
-      - rm -rf website/right-side.h5p/
-      - unzip input/right-side.h5p -d website/right-side.h5p
-      - rm -rf website/device-compartment-1.h5p/
-      - unzip input/device-compartment-1.h5p -d website/device-compartment-1.h5p
+      - rm -rf docs/left-side.h5p/
+      - unzip input/left-side.h5p -d docs/left-side.h5p
+      - rm -rf docs/right-side.h5p/
+      - unzip input/right-side.h5p -d docs/right-side.h5p
+      - rm -rf docs/device-compartment-1.h5p/
+      - unzip input/device-compartment-1.h5p -d docs/device-compartment-1.h5p
 
   start:
-    dir: website
+    dir: docs
     deps:
       - h5p-convert
     cmds:
