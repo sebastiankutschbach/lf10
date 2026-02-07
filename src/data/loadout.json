@@ -1,0 +1,184 @@
+{
+    "compartments": [
+        {
+            "id": "G1",
+            "name": "Gerätefach 1",
+            "side": "left",
+            "description": "Löschtechnik und Wasserführende Armaturen",
+            "image": "/assets/placeholder.jpg",
+            "visualPosition": {
+                "x": "30%",
+                "y": "45%"
+            },
+            "items": [
+                "4x B-Schlauch 20m",
+                "1x Verteiler B-CBC",
+                "2x C-Hohlstrahlrohr",
+                "1x B-Hohlstrahlrohr",
+                "1x Stützkrümmer",
+                "1x Übergangsstück B-C",
+                "2x Schlauchtragekorb C (je 3x C-Schlauch 15m)"
+            ]
+        },
+        {
+            "id": "G2",
+            "name": "Gerätefach 2",
+            "side": "right",
+            "description": "Technische Hilfeleistung und Strom",
+            "image": "/assets/placeholder.jpg",
+            "visualPosition": {
+                "x": "35%",
+                "y": "50%"
+            },
+            "items": [
+                "1x Stromerzeuger 13 kVA",
+                "1x Stativ mit 2x LED-Strahler",
+                "1x Leitungsroller 230V 50m",
+                "1x Motorsäge mit Zubehör",
+                "1x Schnittschutzkleidung",
+                "1x Tauchpumpe TP 4/1",
+                "1x Werkzeugkasten"
+            ]
+        },
+        {
+            "id": "G3",
+            "name": "Gerätefach 3",
+            "side": "left",
+            "description": "Atemschutz",
+            "image": "/assets/placeholder.jpg",
+            "visualPosition": {
+                "x": "45%",
+                "y": "45%"
+            },
+            "items": [
+                "2x Pressluftatmer (PA)",
+                "2x Atemanschluss (Maske)",
+                "2x Kombifilter",
+                "1x Notfallrucksack",
+                "2x Fluchthaube"
+            ]
+        },
+        {
+            "id": "G4",
+            "name": "Gerätefach 4",
+            "side": "right",
+            "description": "Schaum und Kleinlöschgeräte",
+            "image": "/assets/placeholder.jpg",
+            "visualPosition": {
+                "x": "17%",
+                "y": "50%"
+            },
+            "items": [
+                "1x Mittelschaumpistole",
+                "3x Schaummittelkanister 20l",
+                "1x Zumischer Z4",
+                "1x D-Saugschlauch für Schaum",
+                "1x Kübelspritze",
+                "1x Feuerlöscher PG 6 (Pulver)",
+                "1x Feuerlöscher CO2"
+            ]
+        },
+        {
+            "id": "G5",
+            "name": "Gerätefach 5",
+            "side": "left",
+            "description": "Wasserversorgung",
+            "image": "/assets/placeholder.jpg",
+            "visualPosition": {
+                "x": "65%",
+                "y": "45%"
+            },
+            "items": [
+                "4x B-Schlauch 20m",
+                "1x Standrohr 2B",
+                "1x Unterflurhydrantenschlüssel",
+                "1x Überflurhydrantenschlüssel",
+                "2x Schachthaken",
+                "1x Systemtrenner"
+            ]
+        },
+        {
+            "id": "G6",
+            "name": "Gerätefach 6",
+            "side": "right",
+            "description": "Schnellangriff und Hygiene",
+            "image": "/assets/placeholder.jpg",
+            "visualPosition": {
+                "x": "7%",
+                "y": "50%"
+            },
+            "items": [
+                "1x Schnellangriffseinrichtung (50m Formstabil)",
+                "1x Pistolenstrahlrohr",
+                "1x Hygieneboard (Wasser, Seife, Desinfektion)",
+                "1x Grobreinigungset",
+                "4x Verkehrsleitkegel",
+                "2x Euro-Blitzleuchte"
+            ]
+        },
+        {
+            "id": "GR",
+            "name": "Geräteraum Rückseite (Pumpe)",
+            "side": "rear",
+            "description": "Pumpenbedienstand FPN 10-2000",
+            "image": "/assets/placeholder.jpg",
+            "visualPosition": {
+                "x": "50%",
+                "y": "50%"
+            },
+            "items": [
+                "1x Feuerlöschkreiselpumpe FPN 10-2000",
+                "1x Sammelstück A-2B",
+                "1x Saugkorb A",
+                "1x Saugschutzkorb",
+                "3x Kupplungsschlüssel ABC",
+                "1x Arbeitsleine",
+                "1x 5m B-Füllschlauch"
+            ]
+        },
+        {
+            "id": "drivers_cab",
+            "name": "Fahrerraum",
+            "side": "front",
+            "description": "Führungs- und Kommunikationsmittel",
+            "image": "/assets/placeholder.jpg",
+            "visualPosition": {
+                "x": "17%",
+                "y": "50%"
+            },
+            "items": [
+                "1x Fahrzeugfunkgerät MRT",
+                "2x Handsprechfunkgerät HRT",
+                "2x Warnweste",
+                "1x Wärmebildkamera",
+                "1x Einsatzunterlagen / Pläne",
+                "1x Gasmessgerät",
+                "1x Handlampe"
+            ]
+        },
+        {
+            "id": "crew_cab",
+            "name": "Mannschaftsraum",
+            "side": "center",
+            "description": "Mannschaft und Ausrüstung",
+            "image": "/assets/placeholder.jpg",
+            "visualPosition": {
+                "x": "20%",
+                "y": "40%"
+            },
+            "visualPositionRight": {
+                "x": "55%",
+                "y": "50%"
+            },
+            "items": [
+                "2x Pressluftatmer (PA) in Sitzhalterung",
+                "4x Atemanschluss (Maske)",
+                "4x Feuerwehrleine im Beutel",
+                "2x Warnleuchte",
+                "9x Warnweste",
+                "1x Anhaltestab",
+                "1x Krankentrage"
+            ]
+        }
+    ]
+}
