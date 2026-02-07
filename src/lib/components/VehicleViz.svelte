@@ -7,7 +7,13 @@
         select: string;
     }>();
 
-    export let view: "left" | "right" | "rear" = "left";
+    export let view:
+        | "left"
+        | "right"
+        | "rear"
+        | "roof"
+        | "crew-cabin"
+        | "driver-cabin" = "left";
 
     // Cast data to known type
     const compartments = loadoutData.compartments as Compartment[];
@@ -16,22 +22,8 @@
         dispatch("select", id);
     }
 
-    // Helper to check if a compartment belongs to the current view
-    function isVisible(comp: Compartment, currentView: string): boolean {
-        if (currentView === "rear") return comp.side === "rear";
-        if (currentView === "left") {
-            // Left side usually has odd numbered lockers + driver side cab
-            return (
-                comp.side === "left" ||
-                comp.id === "drivers_cab" ||
-                comp.id === "crew_cab"
-            );
-        }
-        if (currentView === "right") {
-            // Right side usually has even lockers + crew cab (other door)
-            return comp.side === "right" || comp.id === "crew_cab"; // Assuming crew cab accessible from both sides
-        }
-        return false;
+    function getVisual(comp: any, currentView: string) {
+        return comp.views.find((v: any) => v.view === currentView);
     }
 </script>
 
@@ -47,14 +39,12 @@
             {/if}
 
             {#each compartments as comp}
-                {@const pos =
-                    view === "right" && comp.visualPositionRight
-                        ? comp.visualPositionRight
-                        : comp.visualPosition}
-                {#if isVisible(comp, view) && pos}
+                {@const visual = getVisual(comp, view)}
+                {#if visual}
                     <button
                         class="marker-btn {comp.id.toLowerCase()}"
-                        style="left: {pos.x}; top: {pos.y};"
+                        style="left: {visual.position.x}; top: {visual.position
+                            .y};"
                         on:click={() => select(comp.id)}
                         aria-label={comp.name}
                     >

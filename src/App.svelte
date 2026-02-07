@@ -7,7 +7,7 @@
 
   // State
   let activeCompartment: Compartment | null = null;
-  let currentView: "left" | "right" | "rear" = "left";
+  let currentView: "left" | "right" | "rear" | "roof" | "crew-cabin" | "driver-cabin" = "left";
 
   // Load data
   const compartments = loadoutData.compartments as Compartment[];
@@ -29,7 +29,7 @@
 
 <main>
   <header>
-    <h1>LF 10 Kennenlernen</h1>
+    <h1>LF 10 Emmerstedt 11-45-32</h1>
     <p class="subtitle">MAN TGM 16.320 4x4 | Rosenbauer</p>
   </header>
 
@@ -42,7 +42,7 @@
   {/if}
 
   <footer>
-    <p>&copy; 2026 Freiwillige Feuerwehr</p>
+    <p>&copy; {new Date().getFullYear()} Freiwillige Feuerwehr</p>
   </footer>
 </main>
 

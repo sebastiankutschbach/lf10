@@ -6,10 +6,15 @@
             "side": "left",
             "description": "Löschtechnik und Wasserführende Armaturen",
             "image": "/assets/placeholder.jpg",
-            "visualPosition": {
-                "x": "30%",
-                "y": "45%"
-            },
+            "views": [
+                {
+                    "view": "left",
+                    "position": {
+                        "x": "30%",
+                        "y": "45%"
+                    }
+                }
+            ],
             "items": [
                 "4x B-Schlauch 20m",
                 "1x Verteiler B-CBC",
@@ -26,10 +31,15 @@
             "side": "right",
             "description": "Technische Hilfeleistung und Strom",
             "image": "/assets/placeholder.jpg",
-            "visualPosition": {
-                "x": "35%",
-                "y": "50%"
-            },
+            "views": [
+                {
+                    "view": "right",
+                    "position": {
+                        "x": "35%",
+                        "y": "50%"
+                    }
+                }
+            ],
             "items": [
                 "1x Stromerzeuger 13 kVA",
                 "1x Stativ mit 2x LED-Strahler",
@@ -46,10 +56,15 @@
             "side": "left",
             "description": "Atemschutz",
             "image": "/assets/placeholder.jpg",
-            "visualPosition": {
-                "x": "45%",
-                "y": "45%"
-            },
+            "views": [
+                {
+                    "view": "left",
+                    "position": {
+                        "x": "45%",
+                        "y": "45%"
+                    }
+                }
+            ],
             "items": [
                 "2x Pressluftatmer (PA)",
                 "2x Atemanschluss (Maske)",
@@ -64,10 +79,15 @@
             "side": "right",
             "description": "Schaum und Kleinlöschgeräte",
             "image": "/assets/placeholder.jpg",
-            "visualPosition": {
-                "x": "17%",
-                "y": "50%"
-            },
+            "views": [
+                {
+                    "view": "right",
+                    "position": {
+                        "x": "17%",
+                        "y": "50%"
+                    }
+                }
+            ],
             "items": [
                 "1x Mittelschaumpistole",
                 "3x Schaummittelkanister 20l",
@@ -84,10 +104,15 @@
             "side": "left",
             "description": "Wasserversorgung",
             "image": "/assets/placeholder.jpg",
-            "visualPosition": {
-                "x": "65%",
-                "y": "45%"
-            },
+            "views": [
+                {
+                    "view": "left",
+                    "position": {
+                        "x": "65%",
+                        "y": "45%"
+                    }
+                }
+            ],
             "items": [
                 "4x B-Schlauch 20m",
                 "1x Standrohr 2B",
@@ -103,10 +128,15 @@
             "side": "right",
             "description": "Schnellangriff und Hygiene",
             "image": "/assets/placeholder.jpg",
-            "visualPosition": {
-                "x": "7%",
-                "y": "50%"
-            },
+            "views": [
+                {
+                    "view": "right",
+                    "position": {
+                        "x": "7%",
+                        "y": "50%"
+                    }
+                }
+            ],
             "items": [
                 "1x Schnellangriffseinrichtung (50m Formstabil)",
                 "1x Pistolenstrahlrohr",
@@ -122,10 +152,15 @@
             "side": "rear",
             "description": "Pumpenbedienstand FPN 10-2000",
             "image": "/assets/placeholder.jpg",
-            "visualPosition": {
-                "x": "50%",
-                "y": "50%"
-            },
+            "views": [
+                {
+                    "view": "rear",
+                    "position": {
+                        "x": "50%",
+                        "y": "50%"
+                    }
+                }
+            ],
             "items": [
                 "1x Feuerlöschkreiselpumpe FPN 10-2000",
                 "1x Sammelstück A-2B",
@@ -142,10 +177,15 @@
             "side": "front",
             "description": "Führungs- und Kommunikationsmittel",
             "image": "/assets/placeholder.jpg",
-            "visualPosition": {
-                "x": "17%",
-                "y": "50%"
-            },
+            "views": [
+                {
+                    "view": "left",
+                    "position": {
+                        "x": "17%",
+                        "y": "50%"
+                    }
+                }
+            ],
             "items": [
                 "1x Fahrzeugfunkgerät MRT",
                 "2x Handsprechfunkgerät HRT",
@@ -162,14 +202,22 @@
             "side": "center",
             "description": "Mannschaft und Ausrüstung",
             "image": "/assets/placeholder.jpg",
-            "visualPosition": {
-                "x": "20%",
-                "y": "40%"
-            },
-            "visualPositionRight": {
-                "x": "55%",
-                "y": "50%"
-            },
+            "views": [
+                {
+                    "view": "left",
+                    "position": {
+                        "x": "20%",
+                        "y": "40%"
+                    }
+                },
+                {
+                    "view": "right",
+                    "position": {
+                        "x": "55%",
+                        "y": "50%"
+                    }
+                }
+            ],
             "items": [
                 "2x Pressluftatmer (PA) in Sitzhalterung",
                 "4x Atemanschluss (Maske)",

@@ -5,14 +5,13 @@ export interface Compartment {
     description: string;
     items: string[];
     image?: string;
-    visualPosition?: {
-        x: string;
-        y: string;
-    };
-    visualPositionRight?: {
-        x: string;
-        y: string;
-    };
+    views: {
+        view: string;
+        position: {
+            x: string;
+            y: string;
+        };
+    }[];
 }
 
 export interface Loadout {
