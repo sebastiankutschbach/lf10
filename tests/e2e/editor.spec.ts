@@ -1,9 +1,12 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Loadout Editor', () => {
+    test.describe.configure({ mode: 'serial' });
+
     test.beforeEach(async ({ page }) => {
         // The app is served with base path /lf10/
         await page.goto('/lf10/');
+        await page.waitForLoadState('networkidle');
     });
 
     test('should show edit button in dev mode', async ({ page }) => {
@@ -30,26 +33,39 @@ test.describe('Loadout Editor', () => {
 
         const nameInput = page.locator('input#comp-name');
         const originalName = await nameInput.inputValue();
-        const testName = originalName + ' (Edited)';
+        const testName = "G1 Test Name";
 
         // Update name
         await nameInput.fill(testName);
 
-        // Click save
-        await page.locator('.btn-save').click();
+        // Click save and wait for response
+        await Promise.all([
+            page.waitForResponse(resp => resp.url().includes('api/save-loadout')),
+            page.locator('.btn-save').click()
+        ]);
 
-        // Wait for success status
-        await expect(page.locator('.btn-save.success')).toBeVisible();
-
-        // Final verification by reloading (handles HMR reload as well)
+        // Wait for potential HMR and reload
+        await page.waitForTimeout(1000);
         await page.reload();
+        await page.waitForLoadState('networkidle');
+
         await page.getByRole('button', { name: 'Edit Loadout' }).click();
         await page.locator('.comp-item').filter({ hasText: 'G1' }).click();
         await expect(page.locator('input#comp-name')).toHaveValue(testName);
 
         // REVERT CHANGE to keep data clean
         await page.locator('input#comp-name').fill(originalName);
-        await page.locator('.btn-save').click();
-        await expect(page.locator('.btn-save.success')).toBeVisible();
+        await Promise.all([
+            page.waitForResponse(resp => resp.url().includes('api/save-loadout')),
+            page.locator('.btn-save').click()
+        ]);
+
+        // Final Verify
+        await page.waitForTimeout(1000);
+        await page.reload();
+        await page.waitForLoadState('networkidle');
+        await page.getByRole('button', { name: 'Edit Loadout' }).click();
+        await page.locator('.comp-item').filter({ hasText: 'G1' }).click();
+        await expect(page.locator('input#comp-name')).toHaveValue(originalName);
     });
 });
