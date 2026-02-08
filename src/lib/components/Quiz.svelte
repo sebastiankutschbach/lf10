@@ -108,7 +108,7 @@
             </div>
 
             <div class="question-box">
-                <h2>In welchem Gerätefach befindet sich:</h2>
+                <h2>Wo befindet sich:</h2>
                 <p class="equipment-name">{questions[currentIndex].item}</p>
             </div>
 
