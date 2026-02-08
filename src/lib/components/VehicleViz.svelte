@@ -2,6 +2,7 @@
     import { createEventDispatcher } from "svelte";
     import loadoutData from "../../data/loadout.json";
     import type { Compartment } from "../types";
+    import { resolveAsset } from "../utils";
 
     const dispatch = createEventDispatcher<{
         select: string;
@@ -31,11 +32,20 @@
     <div class="viz-wrapper">
         <div class="viz-layer">
             {#if view === "left"}
-                <img src="/assets/left-side.jpeg" alt="Fahrzeug Links" />
+                <img
+                    src={resolveAsset("/assets/left-side.jpeg")}
+                    alt="Fahrzeug Links"
+                />
             {:else if view === "right"}
-                <img src="/assets/right-side.png" alt="Fahrzeug Rechts" />
+                <img
+                    src={resolveAsset("/assets/right-side.png")}
+                    alt="Fahrzeug Rechts"
+                />
             {:else if view === "rear"}
-                <img src="/assets/rear-side.png" alt="Fahrzeug Heck" />
+                <img
+                    src={resolveAsset("/assets/rear-side.png")}
+                    alt="Fahrzeug Heck"
+                />
             {/if}
 
             {#each compartments as comp}
@@ -66,9 +76,8 @@
             class:active={view === "right"}
             on:click={() => (view = "right")}>Beifahrerseite</button
         >
-        <button
-            class:active={view === "roof"}
-            on:click={() => (view = "roof")}>Dach</button
+        <button class:active={view === "roof"} on:click={() => (view = "roof")}
+            >Dach</button
         >
         <button
             class:active={view === "crew-cabin"}

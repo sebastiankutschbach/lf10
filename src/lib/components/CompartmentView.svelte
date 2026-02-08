@@ -1,5 +1,6 @@
 <script lang="ts">
-  import type { Compartment } from '../types';
+  import type { Compartment } from "../types";
+  import { resolveAsset } from "../utils";
 
   export let compartment: Compartment;
   export let onClose: () => void;
@@ -12,11 +13,11 @@
       <h2>{compartment.name}</h2>
       <button class="close-btn" on:click={onClose}>&times;</button>
     </div>
-    
+
     <div class="body">
       <div class="image-area">
         {#if compartment.image}
-          <img src={compartment.image} alt={compartment.name} />
+          <img src={resolveAsset(compartment.image)} alt={compartment.name} />
         {:else}
           <div class="placeholder-image">
             <span class="icon">📷</span>
@@ -24,7 +25,7 @@
           </div>
         {/if}
       </div>
-      
+
       <div class="details">
         <p class="desc">{compartment.description}</p>
         <h3>Beladung:</h3>
@@ -85,7 +86,7 @@
     padding: 0;
     line-height: 1;
   }
-  
+
   .close-btn:hover {
     color: var(--color-primary);
   }
@@ -130,7 +131,7 @@
     border-bottom: 1px solid #333;
     color: #ddd;
   }
-  
+
   .item-list li:last-child {
     border-bottom: none;
   }
@@ -142,12 +143,22 @@
   }
 
   @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 
   @keyframes slideUp {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
 </style>
