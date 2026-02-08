@@ -1,12 +1,14 @@
 <script lang="ts">
   import VehicleViz from "./lib/components/VehicleViz.svelte";
   import CompartmentView from "./lib/components/CompartmentView.svelte";
+  import LegalNotice from "./lib/components/LegalNotice.svelte";
   import loadoutData from "./data/loadout.json";
   import type { Compartment } from "./lib/types";
   import "./app.css";
 
   // State
   let activeCompartment: Compartment | null = null;
+  let currentLegalView: "imprint" | "privacy" | null = null;
   let currentView:
     | "left"
     | "right"
@@ -30,6 +32,11 @@
 
   function handleClose() {
     activeCompartment = null;
+    currentLegalView = null;
+  }
+
+  function showLegal(type: "imprint" | "privacy") {
+    currentLegalView = type;
   }
 </script>
 
@@ -47,8 +54,18 @@
     <CompartmentView compartment={activeCompartment} onClose={handleClose} />
   {/if}
 
+  {#if currentLegalView}
+    <LegalNotice type={currentLegalView} onClose={handleClose} />
+  {/if}
+
   <footer>
-    <p>&copy; {new Date().getFullYear()} Freiwillige Feuerwehr</p>
+    <div class="footer-content">
+      <p>&copy; {new Date().getFullYear()} Sebastian Kutschbach</p>
+      <div class="footer-links">
+        <button on:click={() => showLegal("imprint")}>Impressum</button>
+        <button on:click={() => showLegal("privacy")}>Datenschutz</button>
+      </div>
+    </div>
   </footer>
 </main>
 
@@ -96,8 +113,47 @@
 
   footer {
     margin-top: auto;
+    width: 100%;
+    padding: 2rem 0;
+    border-top: 1px solid #222;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     color: #555;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer-links button {
+    background: none;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: color 0.2s;
+    padding: 0;
+  }
+
+  .footer-links button:hover {
+    color: white;
+  }
+
+  @media (max-width: 600px) {
+    .footer-content {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+    }
   }
 
   @keyframes fadeInDown {
