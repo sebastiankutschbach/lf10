@@ -66,6 +66,18 @@
             class:active={view === "right"}
             on:click={() => (view = "right")}>Beifahrerseite</button
         >
+        <button
+            class:active={view === "roof"}
+            on:click={() => (view = "roof")}>Dach</button
+        >
+        <button
+            class:active={view === "crew-cabin"}
+            on:click={() => (view = "crew-cabin")}>Mannschaftsraum</button
+        >
+        <button
+            class:active={view === "driver-cabin"}
+            on:click={() => (view = "driver-cabin")}>Fahrerkabine</button
+        >
     </div>
 </div>
 
@@ -197,6 +209,7 @@
         transition: all 0.2s;
         flex: 1;
         max-width: 200px;
+        flex-basis: 100%;
     }
 
     .perspective-controls button:hover {
