@@ -46,6 +46,21 @@
                     src={resolveAsset("/assets/rear-side.png")}
                     alt="Fahrzeug Heck"
                 />
+            {:else if view === "roof"}
+                <img
+                    src={resolveAsset("/assets/roof.png")}
+                    alt="Fahrzeug Dach"
+                />
+            {:else if view === "crew-cabin"}
+                <img
+                    src={resolveAsset("/assets/crew-cabin.png")}
+                    alt="Mannschaftsraum"
+                />
+            {:else if view === "driver-cabin"}
+                <img
+                    src={resolveAsset("/assets/driver-cabin.png")}
+                    alt="Fahrerkabine"
+                />
             {/if}
 
             {#each compartments as comp}
