@@ -28,7 +28,7 @@
 </script>
 
 <div class="vehicle-container">
-    <div class="vehicle-graphic">
+    <div class="viz-wrapper">
         <div class="viz-layer">
             {#if view === "left"}
                 <img src="/assets/left-side.jpeg" alt="Fahrzeug Links" />
@@ -75,36 +75,35 @@
         flex-direction: column;
         align-items: center;
         gap: 2rem;
-        padding: 2rem;
+        padding: 1rem;
         width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
     }
 
-    .vehicle-graphic {
+    .viz-wrapper {
         width: 100%;
-        max-width: 900px;
-        height: 500px;
-        position: relative;
         display: flex;
         justify-content: center;
-        align-items: center;
-        border-radius: 12px;
-        overflow: hidden;
-        background: #111;
-        border: 1px solid #333;
+        perspective: 1000px;
     }
 
     .viz-layer {
         position: relative;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        display: inline-block;
+        max-width: 100%;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid #333;
+        background: #111;
     }
 
     .viz-layer img {
-        max-width: 100%;
-        max-height: 100%;
+        display: block;
+        width: 100%;
+        height: auto;
+        max-height: 70vh;
         object-fit: contain;
     }
 
@@ -127,26 +126,47 @@
 
     /* The Plus Marker */
     .marker {
-        width: 40px;
-        height: 40px;
-        background: rgba(0, 0, 0, 0.6);
+        width: clamp(24px, 4vw, 36px);
+        height: clamp(24px, 4vw, 36px);
+        background: rgba(227, 24, 55, 0.8); /* Fire Red */
         border: 2px solid white;
         border-radius: 50%;
         color: white;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 24px;
+        font-size: clamp(14px, 2.5vw, 20px);
         font-weight: bold;
         transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     }
 
+    .marker::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 2px solid white;
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+            opacity: 1;
+        }
+        100% {
+            transform: scale(2);
+            opacity: 0;
+        }
+    }
+
     .marker-btn:hover .marker {
-        background: var(--color-primary);
-        border-color: var(--color-primary);
-        transform: scale(1.2);
-        box-shadow: 0 0 25px rgba(255, 0, 0, 0.8);
+        background: white;
+        color: var(--color-primary);
+        transform: scale(1.15);
+        box-shadow: 0 0 30px rgba(227, 24, 55, 0.6);
     }
 
     .marker-btn:focus {
@@ -154,19 +174,40 @@
     }
 
     .marker-btn:focus .marker {
-        border-color: var(--color-accent);
-        box-shadow: 0 0 0 4px rgba(204, 255, 0, 0.3);
+        box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.4);
     }
 
     .perspective-controls {
         display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 1rem;
-        margin-top: 1rem;
+        width: 100%;
+    }
+
+    .perspective-controls button {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 8px;
+        background: #222;
+        color: #999;
+        border: 1px solid #444;
+        cursor: pointer;
+        transition: all 0.2s;
+        flex: 1;
+        max-width: 200px;
+    }
+
+    .perspective-controls button:hover {
+        background: #333;
+        color: white;
     }
 
     .perspective-controls button.active {
         background-color: var(--color-primary);
         color: white;
         border-color: var(--color-primary);
+        box-shadow: 0 4px 15px rgba(227, 24, 55, 0.4);
     }
 </style>

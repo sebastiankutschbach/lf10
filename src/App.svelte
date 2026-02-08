@@ -7,7 +7,13 @@
 
   // State
   let activeCompartment: Compartment | null = null;
-  let currentView: "left" | "right" | "rear" | "roof" | "crew-cabin" | "driver-cabin" = "left";
+  let currentView:
+    | "left"
+    | "right"
+    | "rear"
+    | "roof"
+    | "crew-cabin"
+    | "driver-cabin" = "left";
 
   // Load data
   const compartments = loadoutData.compartments as Compartment[];
@@ -51,11 +57,12 @@
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: clamp(1rem, 5vw, 2rem);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3rem;
+    gap: clamp(1.5rem, 8vw, 3rem);
+    box-sizing: border-box;
   }
 
   header {
@@ -64,12 +71,14 @@
   }
 
   h1 {
-    font-size: 3rem;
+    font-size: clamp(1.5rem, 8vw, 3.5rem);
     background: linear-gradient(135deg, #ff0000 0%, #ff6600 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 0.5rem;
+    line-height: 1.1;
+    word-wrap: break-word;
   }
 
   .subtitle {
