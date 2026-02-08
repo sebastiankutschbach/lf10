@@ -5,6 +5,7 @@
   import ChassisSpecs from "./lib/components/ChassisSpecs.svelte";
   import Separator from "./lib/components/Separator.svelte";
   import LegalNotice from "./lib/components/LegalNotice.svelte";
+  import LoadoutEditor from "./lib/components/LoadoutEditor.svelte";
   import loadoutData from "./data/loadout.json";
   import type { Compartment } from "./lib/types";
   import "./app.css";
@@ -12,6 +13,8 @@
   // State
   let activeCompartment: Compartment | null = null;
   let showQuiz = false;
+  let showEditor = false;
+  const isDev = import.meta.env.DEV;
   let currentLegalView: "imprint" | "privacy" | null = null;
   let currentView:
     | "left"
@@ -46,11 +49,7 @@
 
 <main>
   <header>
-    <Separator
-      text="LF 10 Emmerstedt"
-      level="h1"
-      margin="0 0 0.5rem 0"
-    />
+    <Separator text="LF 10 Emmerstedt" level="h1" margin="0 0 0.5rem 0" />
     <p class="subtitle">MAN TGM 16.320 4x4 | Rosenbauer</p>
     <div class="quiz-teaser">
       <button class="quiz-start-btn" on:click={() => (showQuiz = true)}>
@@ -77,10 +76,17 @@
     <LegalNotice type={currentLegalView} onClose={handleClose} />
   {/if}
 
+  {#if isDev && showEditor}
+    <LoadoutEditor {compartments} onClose={() => (showEditor = false)} />
+  {/if}
+
   <footer>
     <div class="footer-content">
       <p>&copy; {new Date().getFullYear()} Sebastian Kutschbach</p>
       <div class="footer-links">
+        {#if isDev}
+          <button on:click={() => (showEditor = true)}>Edit Loadout</button>
+        {/if}
         <button on:click={() => showLegal("imprint")}>Impressum</button>
         <button on:click={() => showLegal("privacy")}>Datenschutz</button>
       </div>
