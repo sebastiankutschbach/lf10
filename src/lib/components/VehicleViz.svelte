@@ -29,6 +29,30 @@
 </script>
 
 <div class="vehicle-container">
+
+    <div class="perspective-controls">
+        <button class:active={view === "left"} on:click={() => (view = "left")}
+            >Fahrerseite</button
+        >
+        <button class:active={view === "rear"} on:click={() => (view = "rear")}
+            >Heck</button
+        >
+        <button
+            class:active={view === "right"}
+            on:click={() => (view = "right")}>Beifahrerseite</button
+        >
+        <button class:active={view === "roof"} on:click={() => (view = "roof")}
+            >Dach</button
+        >
+        <button
+            class:active={view === "crew-cabin"}
+            on:click={() => (view = "crew-cabin")}>Mannschaftsraum</button
+        >
+        <button
+            class:active={view === "driver-cabin"}
+            on:click={() => (view = "driver-cabin")}>Fahrerkabine</button
+        >
+    </div>
     <div class="viz-wrapper">
         <div class="viz-layer">
             {#if view === "left"}
@@ -78,30 +102,6 @@
                 {/if}
             {/each}
         </div>
-    </div>
-
-    <div class="perspective-controls">
-        <button class:active={view === "left"} on:click={() => (view = "left")}
-            >Fahrerseite</button
-        >
-        <button class:active={view === "rear"} on:click={() => (view = "rear")}
-            >Heck</button
-        >
-        <button
-            class:active={view === "right"}
-            on:click={() => (view = "right")}>Beifahrerseite</button
-        >
-        <button class:active={view === "roof"} on:click={() => (view = "roof")}
-            >Dach</button
-        >
-        <button
-            class:active={view === "crew-cabin"}
-            on:click={() => (view = "crew-cabin")}>Mannschaftsraum</button
-        >
-        <button
-            class:active={view === "driver-cabin"}
-            on:click={() => (view = "driver-cabin")}>Fahrerkabine</button
-        >
     </div>
 </div>
 
