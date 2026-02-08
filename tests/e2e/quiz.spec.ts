@@ -13,7 +13,7 @@ test.describe('Quiz Functionality', () => {
         // Check if quiz overlay is visible
         const quizContainer = page.locator('.quiz-container');
         await expect(quizContainer).toBeVisible();
-        await expect(page.locator('h2:has-text("In welchem Gerätefach befindet sich:")')).toBeVisible();
+        await expect(page.locator('h2:has-text("Wo befindet sich:")')).toBeVisible();
     });
 
     test('should allow answering questions and tracking progress', async ({ page }) => {

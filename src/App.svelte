@@ -2,6 +2,8 @@
   import VehicleViz from "./lib/components/VehicleViz.svelte";
   import CompartmentView from "./lib/components/CompartmentView.svelte";
   import Quiz from "./lib/components/Quiz.svelte";
+  import ChassisSpecs from "./lib/components/ChassisSpecs.svelte";
+  import Separator from "./lib/components/Separator.svelte";
   import LegalNotice from "./lib/components/LegalNotice.svelte";
   import loadoutData from "./data/loadout.json";
   import type { Compartment } from "./lib/types";
@@ -44,7 +46,11 @@
 
 <main>
   <header>
-    <h1>LF 10 Emmerstedt 11-45-32</h1>
+    <Separator
+      text="LF 10 Emmerstedt"
+      level="h1"
+      margin="0 0 0.5rem 0"
+    />
     <p class="subtitle">MAN TGM 16.320 4x4 | Rosenbauer</p>
     <div class="quiz-teaser">
       <button class="quiz-start-btn" on:click={() => (showQuiz = true)}>
@@ -56,6 +62,8 @@
   <section class="viz-section">
     <VehicleViz bind:view={currentView} on:select={handleSelect} />
   </section>
+
+  <ChassisSpecs />
 
   {#if activeCompartment}
     <CompartmentView compartment={activeCompartment} onClose={handleClose} />
@@ -96,17 +104,7 @@
   header {
     text-align: center;
     animation: fadeInDown 0.8s ease;
-  }
-
-  h1 {
-    font-size: clamp(1.5rem, 8vw, 3.5rem);
-    background: linear-gradient(135deg, #ff0000 0%, #ff6600 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 0.5rem;
-    line-height: 1.1;
-    word-wrap: break-word;
+    width: 100%;
   }
 
   .subtitle {

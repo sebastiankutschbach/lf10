@@ -9,9 +9,15 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div class="modal-backdrop" on:click={onClose} role="button" tabindex="0">
   <div class="modal-content glass" on:click|stopPropagation role="region">
-    <div class="header">
-      <h2>{compartment.name}</h2>
-      <button class="close-btn" on:click={onClose}>&times;</button>
+    <div class="header-container">
+      <div class="specs-header">
+        <div class="line"></div>
+        <h2>{compartment.name}</h2>
+        <div class="line"></div>
+      </div>
+      <button class="close-btn" on:click={onClose} aria-label="Schließen"
+        >&times;</button
+      >
     </div>
 
     <div class="body">
@@ -28,7 +34,11 @@
 
       <div class="details">
         <p class="desc">{compartment.description}</p>
-        <h3>Beladung:</h3>
+        <div class="specs-header subtitle">
+          <div class="line"></div>
+          <h3>Beladung:</h3>
+          <div class="line"></div>
+        </div>
         <ul class="item-list">
           {#each compartment.items as item}
             <li>{item}</li>
@@ -68,27 +78,68 @@
     background: #1e1e1e;
   }
 
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  .header-container {
+    position: relative;
+    width: 100%;
     margin-bottom: 2rem;
-    border-bottom: 1px solid #333;
-    padding-bottom: 1rem;
+  }
+
+  .specs-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .specs-header.subtitle {
+    gap: 1rem;
+    margin: 1.5rem 0 1rem 0;
+  }
+
+  .specs-header h2,
+  .specs-header h3 {
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    background: linear-gradient(135deg, #fff 0%, #aaa 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+  }
+
+  .specs-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .specs-header h3 {
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
+
+  .line {
+    height: 1px;
+    flex: 1;
+    background: linear-gradient(90deg, transparent, #e63946, transparent);
   }
 
   .close-btn {
+    position: absolute;
+    top: -0.5rem;
+    right: 0;
     background: none;
     border: none;
-    font-size: 2rem;
+    font-size: 2.5rem;
     cursor: pointer;
-    color: #fff;
+    color: #888;
     padding: 0;
     line-height: 1;
+    z-index: 10;
+    transition: color 0.2s;
   }
 
   .close-btn:hover {
-    color: var(--color-primary);
+    color: #fff;
   }
 
   .body {

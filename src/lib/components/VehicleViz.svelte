@@ -3,6 +3,7 @@
     import loadoutData from "../../data/loadout.json";
     import type { Compartment } from "../types";
     import { resolveAsset } from "../utils";
+    import Separator from "./Separator.svelte";
 
     const dispatch = createEventDispatcher<{
         select: string;
@@ -29,6 +30,7 @@
 </script>
 
 <div class="vehicle-container">
+    <Separator text="Fahrzeug" margin="0 0 2rem 0" />
 
     <div class="perspective-controls">
         <button class:active={view === "left"} on:click={() => (view = "left")}
