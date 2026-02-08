@@ -1,6 +1,7 @@
 <script lang="ts">
   import VehicleViz from "./lib/components/VehicleViz.svelte";
   import CompartmentView from "./lib/components/CompartmentView.svelte";
+  import Quiz from "./lib/components/Quiz.svelte";
   import LegalNotice from "./lib/components/LegalNotice.svelte";
   import loadoutData from "./data/loadout.json";
   import type { Compartment } from "./lib/types";
@@ -8,6 +9,7 @@
 
   // State
   let activeCompartment: Compartment | null = null;
+  let showQuiz = false;
   let currentLegalView: "imprint" | "privacy" | null = null;
   let currentView:
     | "left"
@@ -44,6 +46,11 @@
   <header>
     <h1>LF 10 Emmerstedt 11-45-32</h1>
     <p class="subtitle">MAN TGM 16.320 4x4 | Rosenbauer</p>
+    <div class="quiz-teaser">
+      <button class="quiz-start-btn" on:click={() => (showQuiz = true)}>
+        <span class="icon">🚒</span> Quiz: Kennst du die Beladung?
+      </button>
+    </div>
   </header>
 
   <section class="viz-section">
@@ -52,6 +59,10 @@
 
   {#if activeCompartment}
     <CompartmentView compartment={activeCompartment} onClose={handleClose} />
+  {/if}
+
+  {#if showQuiz}
+    <Quiz {compartments} onClose={() => (showQuiz = false)} />
   {/if}
 
   {#if currentLegalView}
@@ -102,6 +113,36 @@
     font-size: 1.2rem;
     color: var(--color-text-secondary);
     font-weight: 300;
+  }
+
+  .quiz-teaser {
+    margin-top: 1.5rem;
+  }
+
+  .quiz-start-btn {
+    background: rgba(230, 57, 70, 0.1);
+    border: 1px solid rgba(230, 57, 70, 0.3);
+    color: #e63946;
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 auto;
+  }
+
+  .quiz-start-btn:hover {
+    background: #e63946;
+    color: white;
+    box-shadow: 0 0 20px rgba(230, 57, 70, 0.4);
+    transform: scale(1.05);
+  }
+
+  .quiz-start-btn .icon {
+    font-size: 1.2rem;
   }
 
   .viz-section {
