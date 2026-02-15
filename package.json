@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/convert-to-webp.mjs",
     "build": "vite build",
     "preview": "vite preview",
     "test": "playwright test",
