@@ -20,8 +20,26 @@ jobs:
       github.actor == 'dependabot[bot]'
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm ci
+      - name: Run tests
+        run: npm run test
+      - name: Get pull request number
+        id: pr
+        uses: actions/github-script@v7
+        with:
+          script: |
+            core.setOutput('number', context.payload.pull_request.number)
       - name: Enable auto-merge for Dependabot PRs
         uses: peter-evans/enable-pull-request-automerge@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          pull-request-number: ${{ steps.pr.outputs.number }}
           merge-method: squash
