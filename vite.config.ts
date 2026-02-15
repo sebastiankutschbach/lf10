@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 import fs from 'fs'
 import path from 'path'
 
@@ -36,7 +37,21 @@ export default defineConfig({
           }
         });
       }
-    }
+    },
+    ViteImageOptimizer({
+      // Du kannst hier die Standard-Einstellungen überschreiben
+      webp: {
+        quality: 80, // Qualität von 0-100, standard ist 75
+        lossless: false, // Auf true setzen für verlustfreie Komprimierung
+      },
+      // Du kannst auch andere Formate konfigurieren
+      jpg: {
+        quality: 80,
+      },
+      png: {
+        quality: 80,
+      }
+    }),
   ],
   base: '/lf10/',
 })
