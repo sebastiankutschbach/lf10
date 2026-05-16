@@ -17,7 +17,7 @@
     "@tsconfig/svelte": "^5.0.8",
     "@types/node": "^25.6.2",
     "sharp": "^0.34.5",
-    "svelte": "^5.55.5",
+    "svelte": "^5.55.7",
     "svelte-check": "^4.4.8",
     "svgo": "^4.0.1",
     "typescript": "~6.0.3",
